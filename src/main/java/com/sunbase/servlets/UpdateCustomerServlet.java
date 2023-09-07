@@ -14,13 +14,27 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 /**
+/**
+ * Servlet implementation class UpdateCustomerServlet
+ * 
+ * This servlet is responsible for handling customer data updates in a web application.
+ * It receives updated customer details via an HTTP POST request, validates the user's authentication token,
+ * and sends the updated data to an external API for modification. Depending on the API response,
+ * the servlet either redirects to the customer list page or displays error messages on the update-customer page.
  * Servlet implementation class UpdateCustomerServlet
  */
 @WebServlet("/update")
 public class UpdateCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+	/**
+     * Handles HTTP POST requests for updating customer data.
+     *
+     * @param request  The HttpServletRequest object containing the updated customer data.
+     * @param response The HttpServletResponse object used for rendering the response.
+     * @throws ServletException If a servlet-specific error occurs.
+     * @throws IOException      If an I/O error occurs while processing the request.
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String bearerToken = (String) request.getSession().getAttribute("access_token");
